@@ -14,6 +14,9 @@ app.use(cors())
 app.use("/api", routerUsers)
 app.use("/api", routerProducts)
 app.use("/api", routerEndereco)
+app.use("/", (req,res)=>{
+    return res.status(200).json({ok:true})
+})
 
 
 
