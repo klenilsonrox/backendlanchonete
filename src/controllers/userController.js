@@ -4,6 +4,9 @@ import jwt from 'jsonwebtoken';
 
 export const getAllUsers = async(req,res)=>{
     try {
+       if(!req.user.isAdmin){
+        return res.status(401).json({message:"você nao tem permissão para realizar essa ação"})
+       }
         const users = await getUsersService()
         return res.status(200).json(users)
     } catch (error) {
@@ -18,7 +21,7 @@ try {
 
     const userExist = await getUserByEmailService(email)
     if(userExist){
-        return res.status(400).json({message:"já existe um usuário cadastrado com esse email"})
+        return res.status(401).json({message:"usuário já cadastrado", status:401})
     }
 
     const passHash =bcrypt.hashSync(password,10)
@@ -40,6 +43,26 @@ export async function updateUser(req,res){
     } catch (error) {
         return res.status(500).json(error.message)  
     }
+}
+
+export async function getUserById(){
+    const {userId}= req.params
+    try {
+        const userExist = await getUserById(userId)
+        return res.status(200).json({userExist, message:"já existe um usuário cadastrado com esse email"})
+    } catch (error) {
+        return res.status(500).json(error.message)  
+    } 
+}
+
+export async function getUserByemail(req,res){
+
+    try {
+      const user = req.user
+      return res.status(200).json(user)
+    } catch (error) {
+        return res.status(500).json(error.message)  
+    } 
 }
 
 export async function Login(req, res) {

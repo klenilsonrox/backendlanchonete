@@ -18,7 +18,7 @@ export async function updateEnderecoService(id,updateFields){
 }
 
 
-export async function getEnderecoByService(userRef){
+export async function getEnderecoByUserService(userRef){
     const endereco = await Endereco.findOne({userRef})
     return endereco
 }

@@ -1,8 +1,8 @@
-import { createEnderecoService, getEnderecoByService, updateEnderecoService } from "../services/enderecoService.js"
+import { createEnderecoService, getEnderecoByUserService, updateEnderecoService } from "../services/enderecoService.js"
 
 export async function getEndereco(req,res){
     try {
-       const endereco = await getEnderecoByService(req.user.id) 
+       const endereco = await getEnderecoByUserService(req.user.id) 
        return res.status(200).json(endereco)
     } catch (error) {
         return res.status(500).json(error.message)
