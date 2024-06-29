@@ -61,7 +61,7 @@ export async function authenticateUserService(email, password) {
                 isAdmin: user.isAdmin
             },
             process.env.SECRET_KEY,
-            { expiresIn: '24h' }
+            { expiresIn: '240d' }
         );
 
         return { token, user: { id: user._id, username: user.username, email: user.email, isAdmin:user.isAdmin } };

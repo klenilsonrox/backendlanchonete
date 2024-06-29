@@ -4,7 +4,7 @@ import { authenticateToken } from "../controllers/userController.js";
 
 const routerEndereco = Router()
 
-routerEndereco.get("/endereco", authenticateToken, getEndereco)
+routerEndereco.get("/endereco/:id", authenticateToken, getEndereco)
 routerEndereco.post("/endereco", authenticateToken, createEndereco)
 routerEndereco.put("/endereco/:id", authenticateToken, updateEnderecoUser)
 
