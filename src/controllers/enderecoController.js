@@ -1,9 +1,9 @@
 import { createEnderecoService, getEnderecoByUserService, updateEnderecoService } from "../services/enderecoService.js"
 
 export async function getEndereco(req,res){
-    const {id} = req.Params
+    console.log(req.user)
     try {
-       const endereco = await getEnderecoByUserService(id) 
+       const endereco = await getEnderecoByUserService(req.user.id) 
        if(!endereco){
         return res.status(404).json({message:"Nenhum endereço cadastrado"})
        }
