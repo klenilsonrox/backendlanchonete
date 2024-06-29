@@ -7,8 +7,8 @@ export async function getEnderecoService(){
 }
 
 
-export async function createEnderecoService(rua,numero,bairro,complemento,referencia,userRef){
-    const endereco = await Endereco.create({rua,numero,bairro,complemento,referencia,userRef})
+export async function createEnderecoService(rua,numero,bairro,complemento,referencia,userRef,cidade){
+    const endereco = await Endereco.create({rua,numero,bairro,complemento,referencia,userRef,cidade})
     return endereco
 }
 

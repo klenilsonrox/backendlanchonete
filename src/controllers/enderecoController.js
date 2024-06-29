@@ -10,10 +10,10 @@ export async function getEndereco(req,res){
 }
 
 export async function createEndereco(req,res){
-    const {rua,numero,bairro,complemento,referencia} = req.body
+    const {rua,numero,bairro,complemento,referencia,cidade} = req.body
     const userRef = req.user.id
     try {
-       const endereco = await createEnderecoService(rua,numero,bairro,complemento,referencia,userRef) 
+       const endereco = await createEnderecoService(rua,numero,bairro,complemento,referencia,userRef,cidade) 
        return res.status(200).json(endereco)
     } catch (error) {
         return res.status(500).json(error.message)
